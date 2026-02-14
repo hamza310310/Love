@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إلى أصّولتي 🤍</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: "Tahoma", sans-serif;
+    background: linear-gradient(135deg, #0f0f1a, #2b2b4f);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.card {
+    background: rgba(255,255,255,0.08);
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    max-width: 700px;
+    z-index: 2;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #ff4fa3;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.poem {
+    margin-top: 30px;
+    line-height: 2;
+    font-size: 18px;
+    white-space: pre-line;
+    min-height: 200px;
+}
+
+/* قلوب متحركة */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 20px;
+    animation: floatUp 6s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(-100vh) scale(1.5); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>إلى من ملكت قلبي وروحي 🤍</h1>
+    <p>رسالةٌ كتبتها لكِ… بكل ما في القلب.</p>
+
+    <button onclick="startLove()">اضغطي هنا يا أصّولتي 🤍</button>
+
+    <div id="poem" class="poem"></div>
+</div>
+
+<!-- موسيقى رومانسية -->
+<audio id="bgMusic" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=romantic-piano-11086.mp3" type="audio/mp3">
+</audio>
+
+<script>
+
+const text = `إلى من ملكت قلبي وروحي، وكلَّ ما لي، وأصبحتِ هي كلَّ كُلّي…
+
+إليكِ يا سيدةَ العاطفةِ وسرَّ النبضِ الخفيّ، يا من إذا ابتسمتِ أزهرت في صدري حدائقُ لا تعرفُ الذبول، وإذا مرَّ طيفُكِ على خاطري اهتزّت روحي كغصنٍ داعبتهُ ريحُ الربيع.
+
+أحببتُكِ حبًّا لو وُزِّع على الليلِ لأضاءه، ولو سُقيت بهِ الصحراءُ لأنبتت زهرًا من الحنين.
+أحببتُكِ لأنكِ أنتِ… لا شبيهةَ لكِ في القلب، ولا نظيرَ لكِ في العين، ولا بديلَ لكِ في العمر.
+
+في عينيكِ وطنٌ ألوذُ بهِ إذا ضاقت بي الأرض،
+وفي صوتكِ دفءٌ ينسابُ في مسامعي كترتيلِ ملاكٍ عند الفجر،
+وفي حضوركِ سكينةٌ تجعلُ العالمَ أقلَّ قسوة، وأقربَ إلى الرحمة.
+
+يا أنتِ…
+لو كان الحُبُّ كلمةً لكانت اسمكِ،
+ولو كان الحُبُّ دعاءً لكان همسكِ،
+ولو كان الحُبُّ حياةً لكانت حياتي بكِ وحدكِ.
+
+ما عدتُ أفرّق بين نبضي واسمكِ؛
+فإذا خفق قلبي نطقكِ،
+وإذا تنفّستُ شعرتُ أنّ الهواءَ قد مرَّ من بين شفتيكِ قبلي.
+
+فكوني لي كما أنتِ:
+قمرًا إذا أظلمت أيامي،
+ووردًا إذا جفّت حدائقي،
+وحلمًا لا أريد منه استيقاظًا.
+
+أحبكِ حبًّا لا يُقالُ فقط،
+بل يُعاشُ في كلِّ خفقةٍ،
+ويُكتَبُ في كلِّ دقّةِ قلبٍ تناديكِ…
+يا كلَّ كُلّي، ويا سرَّ وجودي. 🤍
+
+- أحبكِ أصّولتي`;
+
+let i = 0;
+
+function typeWriter() {
+    if (i < text.length) {
+        document.getElementById("poem").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 40);
+    }
+}
+
+function startLove() {
+    document.getElementById("bgMusic").play();
+    typeWriter();
+    createHearts();
+}
+
+function createHearts() {
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "🤍";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+    }, 300);
+}
+
+</script>
+
+</body>
+</html>
